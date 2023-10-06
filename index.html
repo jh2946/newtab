@@ -1,0 +1,249 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    <title>New Tab</title>
+</head>
+<body>
+    <img id="bg-img">
+    <div id="content">
+        <div id="left">
+            <input type="text" id="new-thumbnail" autocomplete="off">
+        </div>
+        <div id="center">
+            <h1 id="time"></h1>
+            <h2 id="date"></h2>
+            <h2 id="progress"></h2>
+            <h2 id="milestone-1"></h2>
+            <h2 id="milestone-2"></h2>
+        </div>
+        <div id="bottom">
+            <p id="quote"></p>
+            <p id="quotee"></p>
+            <button id="quote-btn">Quotes</button>
+        </div>
+        <div id="layer-over">
+            <div id="settings">
+                <button id="setting-x"><img src="./static/x.svg" alt="close"></button>
+                <label for="start">Start work:</label><input type="time" name="start" id="start">
+                <label for="end">End work:</label><input type="time" name="end" id="end">
+                <br>
+                <label for="quote-box">Quotes (line-separated):</label>
+                <textarea name="quote-box" id="quote-box" cols="30" rows="3"></textarea>
+            </div>
+        </div>
+        <button id="setting-btn"><img id="setting-img" src="./static/setting.png"></button>
+    </div>
+    <style>
+
+        * {
+            font-family: Jetbrains Mono, Helvetica, Arial, sans-serif;
+        }
+
+        html, body {
+            margin: 0;
+        }
+
+        img#bg-img {
+            object-fit: cover;
+            object-position: 50% 80%;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        input#new-thumbnail {
+            position: fixed;
+            left: 36px;
+            bottom: 36px;
+            font-size: 1.5em;
+            width: 2em;
+            height: 2em;
+            padding: 1em;
+            border-radius: 1em;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            transition-duration: 0.3s;
+            z-index: 1;
+        }
+
+        input#new-thumbnail:focus {
+            background-color: white;
+            width: 298px;
+            transition-duration: 0.3s;
+            box-shadow: none;
+        }
+
+        .circle {
+            display: inline-block;
+            cursor: pointer;
+            margin: 1px;
+            width: 20px;
+            height: 20px;
+            color: red;
+        }
+
+        h3 {
+            margin: 0;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .thumbnail {
+            margin: 18px;
+            padding: 18px;
+            box-sizing: border-box;
+            border-radius: 18px;
+            position: absolute;
+            margin-bottom: 0;
+            background-image: url('./static/glass.png');
+            border: 3px solid;
+            box-shadow: 0 0 10px 5px white;
+        }
+
+        .thumbnail * {
+            transition-duration: 0.5s;
+        }
+
+        #content {
+            height: 100vh;
+            width: 100vw;
+            position: absolute;
+            background-color: #0006;
+            top: 0;
+        }
+
+        .thumbnail-title {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pin, .delete {
+            display: none;
+            cursor: pointer;
+        }
+
+        .thumbnail-title:hover .pin, .thumbnail-title:hover .delete {
+            display: inline;
+        }
+
+        #left{
+            overflow: auto;
+            height: 100vh;
+            box-sizing: border-box;
+            background-color: #0002;
+            backdrop-filter: blur(3px);
+            padding: 36px;
+            width: 370px;
+        }
+
+        #circle {
+            transition-duration: 1s;
+            position: absolute;
+        }
+
+        #center {
+            color: white;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        #center *, #bottom * {
+            margin: 0;
+        }
+
+        #center h1 {
+            font-size: 4em;
+        }
+
+        #bottom {
+            color: white;
+            position: fixed;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        #bottom p {
+            width: 500px;
+        }
+
+        #quotee {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        #layer-over {
+            background-color: #0008;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        #settings {
+            background-color: white;
+            padding: 36px;
+            border-radius: 36px;
+            z-index: 2;
+        }
+
+        textarea#quote-box {
+            width: 100%;
+            resize: none;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            border-radius: 16px;
+            padding: 8px;
+            background-color: white;
+            color: black;
+            width: fit-content;
+            height: fit-content;
+        }
+
+        button#setting-btn {
+            position: fixed;
+            bottom: 36px;
+            right: 36px;
+        }
+
+        #settings {
+            top: 0;
+            left: 0;
+            width: 420px;
+        }
+
+        img#setting-img {
+            width: 32px;
+        }
+
+        button#setting-x {
+            float: right;
+        }
+
+    </style>
+    <script src="./static/bg-img.js"></script>
+    <script src="./static/main.js"></script>
+    <script src="./static/time.js"></script>
+    <script src="./static/quote.js"></script>
+    <script src="./static/settings.js"></script>
+</body>
+</html>

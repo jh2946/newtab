@@ -1,0 +1,20 @@
+{
+    "name": "newtab",
+    "manifest_version": 2,
+    "version": "0.0.1",
+    "description": "newtab",
+    "icons": {
+        "48": "icon.ico"
+    },
+    "permissions": [
+        "storage"
+    ],
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+          "id": "jh2946dev@gmail.com"
+        }
+    }
+}
